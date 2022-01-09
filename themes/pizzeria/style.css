@@ -132,7 +132,7 @@ img {
     padding-top: 3rem;
 }
 @media (min-width: 768px) {
-    .site-header {
+    .site-header .contenedor {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
     }
@@ -245,10 +245,13 @@ img {
         font-size: 2rem;
         text-align: center;
     }    
+    .menu-sitio .menu a:hover {
+        color: var(--blanco);
+    }    
 }
 /** Menu Responsive **/
 .slicknav_menu {
-    background-color: var(--rojo);
+    background-color: var(--verde);
 }
 
 .slicknav_nav a{

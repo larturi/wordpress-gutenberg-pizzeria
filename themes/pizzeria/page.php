@@ -7,3 +7,5 @@
     <p><?php the_content(); ?></p>
 
 <?php endwhile; ?>
+
+<?php get_footer(); ?>
