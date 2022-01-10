@@ -2,9 +2,18 @@
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-    <h1><?php the_title(); ?></h1>
+    <div class="hero" style="background-image: url(<?php echo get_the_post_thumbnail_url(); ?>);">
+        <div class="contenido-hero">
+            <h1><?php the_title(); ?></h1>
+        </div>
+    </div>
 
-    <p><?php the_content(); ?></p>
+    <div class="seccion contenedor">
+        <main class="contenido-principal">
+            <?php the_content(); ?>
+        </main>
+    </div>
+
 
 <?php endwhile; ?>
 
