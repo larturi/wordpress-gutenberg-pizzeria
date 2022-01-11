@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <div class="seccion contenedor">
+    <div class="seccion contenedor con-sidebar">
         <main class="contenido-principal">
             <?php the_content(); ?>
         </main>
