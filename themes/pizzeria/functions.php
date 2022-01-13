@@ -35,6 +35,19 @@ function lapizzeria_menus() {
 }
 add_action('init', 'lapizzeria_menus');
 
+/** Zona de Widgets **/
+function lapizzeria_widgets() {
+    register_sidebar(array(
+        'name' => 'Blog Sidebar',
+        'id' => 'blog-sidebar',
+        'before_widget' => '<div class="widget">',
+        'affter_widget' => '</div>',
+        'before_title' => '<h3>',
+        'after_title' => '</h3>'
+    ));
+}
+add_action('widgets_init', 'lapizzeria_widgets');
+
 /** Agregar botones a paginador **/
 function lapizzeria_botones_paginador() {
     return 'class="boton boton-secundario"';
