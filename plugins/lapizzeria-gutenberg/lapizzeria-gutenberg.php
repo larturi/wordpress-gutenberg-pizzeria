@@ -14,4 +14,20 @@
         exit;
     }
 
+    function lapizzeria_registrar_bloques() {
+        // Si no esta instalado Gutenberg, no se registra el bloque
+        if(!function_exists('register_block_type')){
+            return;
+        }
+
+        // Registra los bloques en el editor
+        wp_register_script(
+            'lapizzeria-editor-script',
+            plugins_url('/build/index.js', __FILE__),
+            array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'),
+            filemtime(plugin_dir_path(__FILE__) . 'build/index.js')
+        );
+    }
+    add_action('init', 'lapizzeria_registrar_bloques');
+
 ?>
