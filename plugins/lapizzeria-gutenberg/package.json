@@ -1,0 +1,17 @@
+{
+  "name": "lapizzeria-gutenberg-lna",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "wp-scripts build",
+    "packages-update": "wp-scripts packages-update",
+    "plugin-zip": "wp-scripts plugin-zip",
+    "start": "wp-scripts start"
+  },
+  "author": "lea.arturi",
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/scripts": "^19.2.2"
+  }
+}
