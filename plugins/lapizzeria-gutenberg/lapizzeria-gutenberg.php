@@ -14,6 +14,22 @@
         exit;
     }
 
+    // Categorias personalizadas
+    function lapizzeria_categoria_personalizada($categories, $post){
+        return array_merge(
+            $categories,
+            array(
+                array(
+                    'slug' => 'lapizzeria',
+                    'title' => 'La Pizzeria Gutenberg',
+                    'icon' => 'store', // https://developer.wordpress.org/resource/dashicons/#menu-alt2
+                )
+            )
+        );
+    }
+    add_filter('block_categories', 'lapizzeria_categoria_personalizada', 10, 2);
+
+
     function lapizzeria_registrar_bloques() {
         // Si no esta instalado Gutenberg, no se registra el bloque
         if(!function_exists('register_block_type')){
@@ -27,6 +43,35 @@
             array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'),
             filemtime(plugin_dir_path(__FILE__) . 'build/index.js')
         );
+
+        // Estilos para el editor
+        wp_register_style(
+            'lapizzeria-editor-styles',
+            plugins_url('/build/editor.css', __FILE__),
+            array('wp-edit-blocks'),
+            filemtime(plugin_dir_path(__FILE__) . 'build/editor.css')
+        );
+
+        // Estilos para los bloques
+        wp_register_style(
+            'lapizzeria-frontend-styles',
+            plugins_url('/build/styles.css', __FILE__),
+            array(),
+            filemtime(plugin_dir_path(__FILE__) . 'build/styles.css')
+        );
+
+        // Registra los bloques en el editor
+        $blocks = [
+            'lapizzeria/boxes',
+        ];
+
+        foreach($blocks as $block){
+            register_block_type($block, [
+                'editor_script' => 'lapizzeria-editor-script',
+                'editor_style' => 'lapizzeria-editor-styles',
+                'style' => 'lapizzeria-frontend-styles',
+            ]);
+        }        
     }
     add_action('init', 'lapizzeria_registrar_bloques');
 

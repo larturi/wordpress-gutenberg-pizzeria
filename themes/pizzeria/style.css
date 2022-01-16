@@ -508,6 +508,12 @@ p.comment-form-cookies-consent label {
     display: flex;
     justify-content: center;
 }
+@media (min-width: 768px) {
+    .form-submit {
+        display: flex;
+        justify-content: end;
+    }
+}
 .lista-comentarios .comment {
     padding: 2rem;
     margin-bottom: 2rem;
