@@ -57,7 +57,9 @@ const {
 const {
   RichText,
   InspectorControls,
-  ColorPalette
+  ColorPalette,
+  BlockControls,
+  AlignmentToolbar
 } = wp.editor;
 const {
   PanelBody
@@ -82,6 +84,13 @@ registerBlockType('lapizzeria/boxes', {
     },
     colorFondo: {
       type: 'string'
+    },
+    colorTexto: {
+      type: 'string'
+    },
+    alineacionContenido: {
+      type: 'string',
+      default: 'center'
     }
   },
   edit: props => {
@@ -89,7 +98,9 @@ registerBlockType('lapizzeria/boxes', {
       attributes: {
         headingBox,
         textBox,
-        colorFondo
+        colorFondo,
+        colorTexto,
+        alineacionContenido
       },
       setAttributes
     } = props;
@@ -112,6 +123,18 @@ registerBlockType('lapizzeria/boxes', {
       });
     };
 
+    const onChangeColorTexto = newColor => {
+      setAttributes({
+        colorTexto: newColor
+      });
+    };
+
+    const onChangeAlinearContenido = newAlineacion => {
+      setAttributes({
+        alineacionContenido: newAlineacion
+      });
+    };
+
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: "Color de Fondo",
       initialOpen: true
@@ -124,16 +147,39 @@ registerBlockType('lapizzeria/boxes', {
     }, "Color de Fondo"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPalette, {
       onChange: onChangeColorFondo,
       value: colorFondo
-    }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+      title: "Color de Texto",
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "components-base-control"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "components-base-control__field"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+      className: "components-base-control__label"
+    }, "Color de Texto"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPalette, {
+      onChange: onChangeColorTexto,
+      value: colorTexto
+    }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(AlignmentToolbar, {
+      onChange: onChangeAlinearContenido
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "box",
       style: {
-        backgroundColor: colorFondo
+        backgroundColor: colorFondo,
+        textAlign: alineacionContenido
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+      style: {
+        color: colorTexto
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
       placeholder: "Agrega el encabezado",
       onChange: onChangeHeadingBox,
       value: headingBox
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+      style: {
+        color: colorTexto
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
       placeholder: "Agrega el texto",
       onChange: onChangeTextBox,
       value: textBox
@@ -144,18 +190,29 @@ registerBlockType('lapizzeria/boxes', {
       attributes: {
         headingBox,
         textBox,
-        colorFondo
+        colorFondo,
+        colorTexto,
+        alineacionContenido
       },
       setAttributes
     } = props;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "box",
       style: {
-        backgroundColor: colorFondo
+        backgroundColor: colorFondo,
+        textAlign: alineacionContenido
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+      style: {
+        color: colorTexto
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
       value: headingBox
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+      style: {
+        color: colorTexto
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
       value: textBox
     })));
   }
