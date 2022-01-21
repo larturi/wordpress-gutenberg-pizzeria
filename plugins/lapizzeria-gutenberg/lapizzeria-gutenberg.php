@@ -72,7 +72,19 @@
                 'style' => 'lapizzeria-frontend-styles',
             ]);
         }        
+
+        register_block_type( 'lapizzeria/menu', array(
+            'editor_script' => 'lapizzeria-editor-script', // script principal para editor
+            'editor_style' => 'lapizzeria-editor-styles', // estilos para el editor
+            'style' => 'lapizzeria-frontend-styles', // estilos para el front end
+            'render_callback' => 'lapizzeria_especialidades_front_end' // Query a la base de datos
+        ));
+
     }
     add_action('init', 'lapizzeria_registrar_bloques');
+
+    function lapizzeria_especialidades_front_end() {
+        return "sdsdsdsds";
+    }
 
 ?>
