@@ -333,8 +333,7 @@ registerBlockType('lapizzeria/menu', {
 
     if (especialidades && especialidades.length === 0) {
       return 'No hay resultados';
-    } // console.log(categorias);
-    // Verificar categorias
+    } // Verificar categorias
 
 
     if (!categorias) {

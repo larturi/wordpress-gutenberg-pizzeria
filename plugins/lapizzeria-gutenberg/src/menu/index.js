@@ -70,9 +70,6 @@ registerBlockType('lapizzeria/menu', {
             return 'No hay resultados';
         }
 
-        // console.log(categorias);
-
-
         // Verificar categorias
         if(!categorias) {
             console.log('No hay categorias');
